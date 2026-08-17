@@ -205,8 +205,8 @@
         <div class="form-group">
           <label for="delivery-location">Delivery Area</label>
           <select id="delivery-location" onchange="updateTotals()" required>
-            <option value="60">Inside Narsingdi (80 BDT)</option>
-            <option value="120">Outside Narsingdi (130 BDT)</option>
+            <option value="80">Inside Narsingdi (80 BDT)</option>
+            <option value="130">Outside Narsingdi (130 BDT)</option>
           </select>
         </div>
 
@@ -241,9 +241,11 @@
     };
 
     const products = {
-      "101": { name: "Argentina Home Jersey", price: "900 BDT" },
-      "102": { name: "Real Madrid Home Jersey", price: "980 BDT" },
-      "103": { name: "Barcelona Home Jersey", price: "900 BDT" }
+      "101": { name: "Real Madrid Home Jersey", price: "1050 BDT" },
+      "102": { name: "Real Madrid Away Jersey (Halh Sleeve)", price: "1050 BDT" },
+      "103": { name: "Real Madrid Away Jersey (Full Sleeve)", price: "1050 BDT" },
+      "104": { name: "Barcelona Home jersey", price: "1050 BDT" },
+      "105": { name: "Barcelona Away Jersey", price: "1050 BDT" },
     };
 
     // Extract product ID and size from URL parameters
