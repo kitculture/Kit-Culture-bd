@@ -155,15 +155,8 @@
     <div class="card" id="checkout-container">
       <h2>Complete Your Order</h2>
 
-      <div class="order-summary">
-        <h3>Order Summary</h3>
-        <p><strong>Item:</strong> <span id="summary-name">Loading...</span></p>
-        <p><strong>Size:</strong> <span id="summary-size">Not selected</span></p>
-        <div class="summary-row">
-          <span>Item Price:</span>
-          <span id="summary-price">0 BDT</span>
-        </div>
-        <div class="summary-row">
+     <div class="order-summary">
+       <div class="summary-row">
           <span>Delivery Charge:</span>
           <span id="summary-delivery">0 BDT</span>
         </div>
@@ -247,15 +240,16 @@
     let rawPrice = 0;
     let itemTotalPrice = 0;
 
-    if (products[productId]) {
-      document.getElementById('summary-name').innerText = products[productId].name;
+   if (products[productId]) {
+  document.getElementById('summary-name').innerText = products[productId].name;
 
-      rawPrice = parseInt(products[productId].price.replace(/[^0-9]/g, '')) || 0;
-      itemTotalPrice = rawPrice * qtyParam;
+  rawPrice = parseInt(products[productId].price.replace(/[^0-9]/g, '')) || 0;
+  itemTotalPrice = rawPrice * qtyParam;
 
-      document.getElementById('summary-size').innerText = `${size || 'Not selected'} (Qty: ${qtyParam})`;
-      document.getElementById('summary-price').innerText = itemTotalPrice + ' BDT';
-    }
+  document.getElementById('summary-size').innerText = size || 'Not selected';
+  document.getElementById('summary-qty').innerText = qtyParam; // Populate Quantity
+  document.getElementById('summary-price').innerText = itemTotalPrice + ' BDT';
+}
 
     function updateTotal() {
       const deliverySelect = document.getElementById('delivery-location');
