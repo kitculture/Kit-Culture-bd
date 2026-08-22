@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout</title>
-  
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-  <!-- CSS Styling -->
   <style>
     * {
       box-sizing: border-box;
@@ -27,7 +24,7 @@
     }
 
     .back-link {
-      color: #124e47;
+      color: #1d4ed8;
       text-decoration: none;
       font-weight: 600;
       display: inline-block;
@@ -41,23 +38,22 @@
 
     .card {
       background: #ffffff;
+      border-radius: 12px;
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     h2 {
       margin-top: 0;
       margin-bottom: 20px;
-      font-size: 24px;
-      color: #124e47;
+      font-size: 22px;
+      color: #1e293b;
     }
 
-    /* Order Summary Box */
     .order-summary {
-      background-color: #fbfdfd;
-      border: 1px solid #e2e8e7;
-      border-radius: 6px;
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
       padding: 15px;
       margin-bottom: 25px;
     }
@@ -66,13 +62,13 @@
       margin-top: 0;
       margin-bottom: 12px;
       font-size: 16px;
-      color: #124e47;
+      color: #1e293b;
     }
 
     .order-summary p {
-      margin: 6px 0;
-      font-size: 15px;
-      color: #4a5568;
+      margin: 4px 0;
+      font-size: 14px;
+      color: #64748b;
     }
 
     .summary-row {
@@ -82,14 +78,13 @@
 
     .summary-row.total {
       font-weight: bold;
-      color: #124e47;
-      font-size: 1.1em;
+      font-size: 16px;
+      color: #1e293b;
       border-top: 1px dashed #cbd5e1;
       padding-top: 8px;
       margin-top: 8px;
     }
 
-    /* Form Fields */
     .form-group {
       margin-bottom: 20px;
     }
@@ -99,7 +94,7 @@
       margin-bottom: 6px;
       font-weight: 600;
       font-size: 14px;
-      color: #2d3748;
+      color: #334155;
     }
 
     .form-group input,
@@ -118,14 +113,13 @@
     .form-group textarea:focus,
     .form-group select:focus {
       outline: none;
-      border-color: hsl(123, 83%, 43%);
-      box-shadow: 0 0 0 3px #08b83426;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
     }
 
-    /* Button */
     .btn {
       width: 100%;
-      background-color: #1dda1d;
+      background-color: #1d4ed8;
       color: #ffffff;
       border: none;
       padding: 14px;
@@ -138,45 +132,44 @@
     }
 
     .btn:hover {
-      background-color: #1fd60e;
+      background-color: #1e40af;
     }
 
-    /* Thank You Message */
     #thank-you-message {
-      display: none; /* hidden by default */
+      display: none;
       text-align: center;
       padding: 40px 20px;
     }
 
     #thank-you-message h2 {
-      color: #124e47;
+      color: #1e293b;
     }
   </style>
 </head>
+
 <body>
 
   <div class="wrapper">
-    <a class="back-link" href="index.html">&larr; Back to Shop</a>
+    <a class="back-link" href="index.html">&leftarrow; Back to Shop</a>
 
     <div class="card" id="checkout-container">
       <h2>Complete Your Order</h2>
 
-      <!-- Dynamic Order Summary -->
       <div class="order-summary">
         <h3>Order Summary</h3>
         <p><strong>Item:</strong> <span id="summary-name">Loading...</span></p>
         <p><strong>Size:</strong> <span id="summary-size">Not selected</span></p>
         <div class="summary-row">
           <span>Item Price:</span>
-          <span><span id="summary-price">0</span> BDT</span>
+          <span id="summary-price">0 BDT</span>
         </div>
         <div class="summary-row">
           <span>Delivery Charge:</span>
-          <span><span id="summary-delivery">0</span> BDT</span>
+          <span id="summary-delivery">0 BDT</span>
         </div>
         <div class="summary-row total">
-          <span>Grand Total:</span>
-          <span><span id="summary-grand-total">0</span> BDT</span>
+          <span>Total:</span>
+          <span id="summary-grand-total">0 BDT</span>
         </div>
       </div>
 
@@ -201,12 +194,11 @@
           <textarea id="address" rows="3" required></textarea>
         </div>
 
-        <!-- NEW: Delivery Location Option -->
         <div class="form-group">
           <label for="delivery-location">Delivery Area</label>
-          <select id="delivery-location" onchange="updateTotals()" required>
-            <option value="60">Inside Narsingdi (60 BDT)</option>
-            <option value="130">Outside Narsingdi (130 BDT)</option>
+          <select id="delivery-location" onchange="updateTotal()" required>
+            <option value="80">Inside Dhaka (80 BDT)</option>
+            <option value="130">Outside Dhaka (130 BDT)</option>
           </select>
         </div>
 
@@ -221,67 +213,60 @@
       </form>
     </div>
 
-    <!-- Thank You Message -->
     <div class="card" id="thank-you-message">
       <h2>Thank You!</h2>
       <p>Your order request has been processed. Check your inbox for confirmation.</p>
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
-    // Initialize EmailJS safely
-    let emailJSLoaded = false;
-      window.onload = function() {
+    (function () {
       if (typeof emailjs !== 'undefined') {
-        emailjs.init("3CKjsxaNy_Wp8Y7vI");
+        emailjs.init("KxIoadq_wpdYrh7jc");
         console.log("EmailJS loaded successfully.");
       } else {
-        console.error("EmailJS failed to load. Check your internet connection.");
+        console.error("EmailJS failed to load. Check your Internet connection.");
       }
-    };
+    })();
 
     const products = {
-      "101": { name: "Real Madrid Home Jersey (Halh Sleeve)", price: "1050 BDT" },
-      "102": { name: "Real Madrid Away Jersey (Halh Sleeve)", price: "1050 BDT" },
-      "103": { name: "Real Madrid Away Jersey (Full Sleeve)", price: "1150 BDT" },
-      "104": { name: "Barcelona Home jersey (Halh Sleeve)", price: "1050 BDT" },
-      "105": { name: "Barcelona Away Jersey (Halh Sleeve)", price: "1050 BDT" }, 
-      "106": { name: "Inter Miami CF Third (Half Sleeve)", price: "1050 BDT" },
+      "101": { name: "Real Madrid Away 26/27 (Half Sleeve)", price: "1050 BDT" },
+      "102": { name: "Real Madrid Away 26/27 (Half Sleeve)", price: "1050 BDT" },
+      "103": { name: "Real Madrid Away 26/27 (Full Sleeve)", price: "1250 BDT" },
+      "104": { name: "FC Barcelona Away 26/27 (Half Sleeve)", price: "1050 BDT" },
+      "105": { name: "FC Barcelona Away 26/27 (Half Sleeve)", price: "1050 BDT" },
+      "106": { name: "Inter Miami CF Third 26/27 (Half Sleeve)", price: "1050 BDT" }
     };
 
-    // Extract product ID and size from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
     const size = urlParams.get('size');
+    const qtyParam = parseInt(urlParams.get('qty')) || 1;
 
     let rawPrice = 0;
+    let itemTotalPrice = 0;
 
     if (products[productId]) {
       document.getElementById('summary-name').innerText = products[productId].name;
-      document.getElementById('summary-price').innerText = products[productId].price;
-      
-      // Convert price string (e.g., "1150 BDT") into a clean number (1150)
-      rawPrice = parseFloat(products[productId].price.replace(/[^0-9.]/g, '')) || 0;
-    }
-    
-    if (size) {
-      document.getElementById('summary-size').innerText = size;
-    } else {
-      document.getElementById('summary-size').innerText = 'Not selected';
+
+      rawPrice = parseInt(products[productId].price.replace(/[^0-9]/g, '')) || 0;
+      itemTotalPrice = rawPrice * qtyParam;
+
+      document.getElementById('summary-size').innerText = `${size || 'Not selected'} (Qty: ${qtyParam})`;
+      document.getElementById('summary-price').innerText = itemTotalPrice + ' BDT';
     }
 
-    // Function to calculate delivery and grand total dynamically
-    function updateTotals() {
+    function updateTotal() {
       const deliverySelect = document.getElementById('delivery-location');
       const deliveryCharge = parseFloat(deliverySelect.value) || 0;
-      const grandTotal = rawPrice + deliveryCharge;
+      const grandTotal = itemTotalPrice + deliveryCharge;
 
-      document.getElementById('summary-delivery').innerText = deliveryCharge;
-      document.getElementById('summary-grand-total').innerText = grandTotal;
+      document.getElementById('summary-delivery').innerText = deliveryCharge + ' BDT';
+      document.getElementById('summary-grand-total').innerText = grandTotal + ' BDT';
     }
 
-    // Run initial calculation when page loads
-    updateTotals();
+    updateTotal();
 
     function handleOrder(e) {
       e.preventDefault();
@@ -293,43 +278,41 @@
 
       const name = document.getElementById('name').value;
       const phone = document.getElementById('phone').value;
-      const gmail = document.getElementById('email').value;
+      const email = document.getElementById('email').value;
       const address = document.getElementById('address').value;
       const payment = document.getElementById('payment-method').value;
-      
-      // Get selected delivery area text and charge value
+
       const deliverySelect = document.getElementById('delivery-location');
-      const deliveryAreaText = deliverySelect.options[deliverySelect.selectedIndex].text;
+      const deliveryArea = deliverySelect.options[deliverySelect.selectedIndex].text;
       const deliveryCharge = deliverySelect.value;
-      const grandTotal = rawPrice + parseFloat(deliveryCharge);
+      const grandTotal = itemTotalPrice + parseFloat(deliveryCharge);
 
       const itemName = document.getElementById('summary-name').innerText;
-      const itemSize = document.getElementById('summary-size').innerText;
-      const itemPrice = document.getElementById('summary-price').innerText;
+      const itemSize = size || 'Not selected';
 
-      // Disable button while sending
       const submitBtn = e.target.querySelector('button[type="submit"]');
       submitBtn.innerText = "Processing...";
       submitBtn.disabled = true;
 
-      emailjs.send("service_o66sw8e", "template_2srtjbo", {
-        to_email: "kitculture0@gmail.com",
+      emailjs.send("service_uddedbe", "template_3urtjbc", {
+        to_email: "kitculturebd@gmail.com",
         customer_name: name,
         customer_phone: phone,
-        customer_gmail: gmail,
+        customer_email: email,
         customer_address: address,
-        delivery_area: deliveryAreaText,
+        delivery_area: deliveryArea,
         delivery_charge: deliveryCharge + " BDT",
         grand_total: grandTotal + " BDT",
         payment_method: payment,
         item_name: itemName,
         item_size: itemSize,
-        item_price: itemPrice
+        item_quantity: qtyParam,
+        item_price: itemTotalPrice + " BDT"
       })
-      .then(function(response) {
+      .then(function (response) {
         document.getElementById('checkout-container').style.display = 'none';
         document.getElementById('thank-you-message').style.display = 'block';
-      }, function(error) {
+      }, function (error) {
         console.error("EmailJS error:", error);
         alert("Failed to send order. Please try again.");
         submitBtn.innerText = "Confirm Order";
@@ -337,5 +320,7 @@
       });
     }
   </script>
+
 </body>
+
 </html>
