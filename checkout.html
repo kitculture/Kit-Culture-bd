@@ -74,6 +74,7 @@
     .summary-row {
       display: flex;
       justify-content: space-between;
+      margin-top: 4px;
     }
 
     .summary-row.total {
@@ -155,24 +156,24 @@
     <div class="card" id="checkout-container">
       <h2>Complete Your Order</h2>
 
-    <div class="order-summary">
-  <h3>Order Summary</h3>
-  <p><strong>Item:</strong> <span id="summary-name">Loading...</span></p>
-  <p><strong>Size:</strong> <span id="summary-size">Not selected</span></p>
-  <p><strong>Quantity:</strong> <span id="summary-qty">1</span></p>
-  <div class="summary-row">
-    <span>Item Price:</span>
-    <span id="summary-price">0 BDT</span>
-  </div>
-  <div class="summary-row">
-    <span>Delivery Charge:</span>
-    <span id="summary-delivery">0 BDT</span>
-  </div>
-  <div class="summary-row total">
-    <span>Total:</span>
-    <span id="summary-grand-total">0 BDT</span>
-  </div>
-</div>
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <p><strong>Item:</strong> <span id="summary-name">Loading...</span></p>
+        <p><strong>Size:</strong> <span id="summary-size">Not selected</span></p>
+        <p><strong>Quantity:</strong> <span id="summary-qty">1</span></p>
+        <div class="summary-row">
+          <span>Item Price:</span>
+          <span id="summary-price">0 BDT</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery Charge:</span>
+          <span id="summary-delivery">0 BDT</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total:</span>
+          <span id="summary-grand-total">0 BDT</span>
+        </div>
+      </div>
 
       <form id="checkout-form" onsubmit="handleOrder(event)">
         <div class="form-group">
@@ -223,7 +224,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
     (function () {
-      if (typeof emailjs !== 'undefined') 
+      if (typeof emailjs !== 'undefined') {
         emailjs.init("3CKjsxaNy_Wp8Y7vI");
         console.log("EmailJS loaded successfully.");
       } else {
@@ -248,16 +249,18 @@
     let rawPrice = 0;
     let itemTotalPrice = 0;
 
-   if (products[productId]) {
-  document.getElementById('summary-name').innerText = products[productId].name;
+    if (products[productId]) {
+      document.getElementById('summary-name').innerText = products[productId].name;
 
-  rawPrice = parseInt(products[productId].price.replace(/[^0-9]/g, '')) || 0;
-  itemTotalPrice = rawPrice * qtyParam;
+      rawPrice = parseInt(products[productId].price.replace(/[^0-9]/g, '')) || 0;
+      itemTotalPrice = rawPrice * qtyParam;
 
-  document.getElementById('summary-size').innerText = size || 'Not selected';
-  document.getElementById('summary-qty').innerText = qtyParam; // Populate Quantity
-  document.getElementById('summary-price').innerText = itemTotalPrice + ' BDT';
-}
+      document.getElementById('summary-size').innerText = size || 'Not selected';
+      document.getElementById('summary-qty').innerText = qtyParam;
+      document.getElementById('summary-price').innerText = itemTotalPrice + ' BDT';
+    } else {
+      document.getElementById('summary-name').innerText = 'Product Not Found';
+    }
 
     function updateTotal() {
       const deliverySelect = document.getElementById('delivery-location');
