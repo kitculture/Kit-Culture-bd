@@ -208,14 +208,14 @@
             <div id="jersey-price"></div>
 
             <div class="order-box">
-                <label for="size"><strong>সাইজ সিলেক্ট করুন:</strong></label>
+                <label for="size"><strong>Select Size1:</strong></label>
                 <select id="size">
                     <option>Medium (M)</option>
                     <option>Large (L)</option>
                     <option>Extra Large (XL)</option>
                 </select>
 
-                <label for="quantity"><strong>পরিমাণ:</strong></label>
+                <label for="quantity"><strong Quantity:</strong></label>
                 <input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
 
                 <button class="buy-btn" onclick="goToCheckout()">Order Now</button>
@@ -238,15 +238,42 @@
                     <li>হাফ হাতা ও পলো কলার স্টাইল।</li>
                 </ul>
             </div>
-
             <div class="info-section">
-                <h4>সাইজ গাইডলাইন (ইঞ্চিতে):</h4>
-                <p>M = দৈর্ঘ্য ২৭.৫, বুক ৩৮.৫</p>
-                <p>L = দৈর্ঘ্য ২৮.৫, বুক ৪০.৫</p>
-                <p>XL = দৈর্ঘ্য ২৯.৫, বুক ৪২.৫</p>
-                <p>XXL = দৈর্ঘ্য ৩০.৫, বুক ৪৪.৫</p>
-            </div>
+    <h4>সাইজ গাইডলাইন (ইঞ্চিতে):</h4>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13.5px; text-align: left;">
+        <thead>
+            <tr style="background-color: #f1f5f9; border-bottom: 1px solid #cbd5e1;">
+                <th style="padding: 8px; border: 1px solid #e2e8f0;">সাইজ (Size)</th>
+                <th style="padding: 8px; border: 1px solid #e2e8f0;">দৈর্ঘ্য (Length)</th>
+                <th style="padding: 8px; border: 1px solid #e2e8f0;">বুক (Chest)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #e2e8f0; font-weight: bold;">M</td>
+                <td style="padding: 8px; border: 1px solid #e2e8f0;">২৭.৫</td>
+                <td style="padding: 8px; border: 1px solid #e2e8f0;">৩৮.৫</td>
+            </tr>
+            <tr style="background-color: #f8fafc;">
+                <td style="padding: 8px; border: 1px solid #e2e8f0; font-weight: bold;">L</td>
+                <td style="padding: 8px; border: 1px solid #e2e8f0;">২৮.৫</td>
+                <td style="padding: 8px; border: 1px solid #e2e8f0;">৪০.৫</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #e2e8f0; font-weight: bold;">XL</td>
+                <td style="padding: 8px; border: 1px solid #e2e8f0;">২৯.৫</td>
+                <td style="padding: 8px; border: 1px solid #e2e8f0;">৪২.৫</td>
+            </tr>
+            <tr style="background-color: #f8fafc;">
+                <td style="padding: 8px; border: 1px solid #e2e8f0; font-weight: bold;">XXL</td>
+                <td style="padding: 8px; border: 1px solid #e2e8f0;">৩০.৫</td>
+                <td style="padding: 8px; border: 1px solid #e2e8f0;">৪৪.৫</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
+           
             <div class="info-section">
                 <h4>ডেলিভারি সংক্রান্ত:</h4>
                 <p>প্যাকেট খুলে প্রোডাক্ট দেখে পছন্দ হলে তারপরে পে করুন। পছন্দ না হলে সাথে সাথে রিটার্ন করতে পারবেন।</p>
