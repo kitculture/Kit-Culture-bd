@@ -155,16 +155,24 @@
     <div class="card" id="checkout-container">
       <h2>Complete Your Order</h2>
 
-     <div class="order-summary">
-       <div class="summary-row">
-          <span>Delivery Charge:</span>
-          <span id="summary-delivery">0 BDT</span>
-        </div>
-        <div class="summary-row total">
-          <span>Total:</span>
-          <span id="summary-grand-total">0 BDT</span>
-        </div>
-      </div>
+    <div class="order-summary">
+  <h3>Order Summary</h3>
+  <p><strong>Item:</strong> <span id="summary-name">Loading...</span></p>
+  <p><strong>Size:</strong> <span id="summary-size">Not selected</span></p>
+  <p><strong>Quantity:</strong> <span id="summary-qty">1</span></p>
+  <div class="summary-row">
+    <span>Item Price:</span>
+    <span id="summary-price">0 BDT</span>
+  </div>
+  <div class="summary-row">
+    <span>Delivery Charge:</span>
+    <span id="summary-delivery">0 BDT</span>
+  </div>
+  <div class="summary-row total">
+    <span>Total:</span>
+    <span id="summary-grand-total">0 BDT</span>
+  </div>
+</div>
 
       <form id="checkout-form" onsubmit="handleOrder(event)">
         <div class="form-group">
