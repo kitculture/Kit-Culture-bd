@@ -1,159 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jersey Store - Home</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <style>
-        .product-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 10px; /* Reduced gap between cards */
-            font-family: sans-serif; 
-            max-width: 500px; /* Keeps layout compact like reference site */
-            margin: 0 auto;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jersey Store - Home</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  
+  <style>
+    /* Grid & General Styling */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      font-family: sans-serif;
+      max-width: 500px;
+      margin: 0 auto;
+    }
 
-        .product-card { 
-            border: 1px solid #eee; 
-            padding: 8px; /* Compact padding */
-            border-radius: 4px; 
-            text-decoration: none; 
-            color: #333; 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-sizing: border-box;
-            background: #fff;
-        }
+    /* Product Card Styling */
+    .product-card {
+      border: 1px solid #eee;
+      padding: 8px;
+      border-radius: 4px;
+      text-decoration: none;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      background: #fff;
+    }
 
-        .product-card img { 
-            width: 100%; 
-            height: auto;
-            border-radius: 2px; 
-        }
+    .product-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+    }
 
-        /* Smaller, left-aligned title */
-        .product-card h3 {
-            font-size: 14px;
-            font-weight: 600;
-            margin: 8px 0 4px 0;
-            line-height: 1.2;
-            color: #222;
-        }
+    .product-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 8px 0 4px 0;
+      line-height: 1.2;
+      color: #222;
+    }
 
-        /* Price styling: Light deleted price, dark main price */
-        .price-container {
-            font-size: 13px;
-            margin-bottom: 8px;
-        }
+    /* Price Styling */
+    .price-container {
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
 
-        .price-container del {
-            color: #999; /* Light gray for old price */
-            font-weight: normal;
-            margin-right: 5px;
-        }
+    .price-container del {
+      color: #999;
+      font-weight: normal;
+      margin-right: 5px;
+    }
 
-        .price-container .current-price {
-            color: #b12704; /* Dark/Bold price */
-            font-weight: bold;
-        }
+    .price-container .current-price {
+      color: #b12704;
+      font-weight: bold;
+    }
 
-        /* Green Order Now Button */
-        .order-btn {
-            display: block;
-            background-color: #3b7135;
-            color: #ffffff;
-            text-align: center;
-            padding: 8px 0;
-            font-weight: bold;
-            font-size: 13px;
-            border-radius: 3px;
-            text-transform: uppercase;
-        }
-    </style>
+    /* Green Order Now Button */
+    .order-btn {
+      display: block;
+      background-color: #3b7135;
+      color: #ffffff;
+      text-align: center;
+      padding: 8px 0;
+      font-weight: bold;
+      font-size: 13px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+
+    /* --- Banner & Header Styling --- */
+    .site-banner {
+      width: 100%;
+      background-color: #ffffff;
+      border-bottom: 1px solid #eee;
+      padding: 12px 0;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .banner-container {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .banner-logo {
+      max-height: 60px;
+      width: auto;
+      object-fit: contain;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="product-grid">
-        <!-- Product 1 -->
-        <a href="product.html?id=101" class="product-card">
-            <img src="Real Madrid 2026_27 Jersey Reveal.png" alt="Real Madrid Home 26/27(Half Sleeve)">
-            <h3>Real Madrid Home 26/27(Half Sleeve)</h3>
-            <div class="price-container">
-                <del>1050৳</del>
-                <span class="current-price">950.00৳</span>
-            </div>
-            <span class="order-btn">Order Now</span>
-        </a>
+  <!-- Site Header / Banner Section -->
+  <header class="site-banner">
+    <div class="banner-container">
+      <a href="index.html">
+        <img src="logo.png" alt="Kit Culture Logo" class="banner-logo">
+      </a>
+    </div>
+  </header>
 
-        <!-- Product 2 -->
-        <a href="product.html?id=102" class="product-card">
-            <img src="Real Madrid Teal Away Kit Reveal (1).png" alt="Real Madrid Away 26/27(Half Sleeve)">
-            <h3>Real Madrid Away 26/27(Half Sleeve)</h3>
-            <div class="price-container">
-                <del>1050.00৳</del>
-                <span class="current-price">950.00৳</span>
-            </div>
-            <span class="order-btn">Order Now</span>
-        </a>
+  <!-- Main Product Grid -->
+  <div class="product-grid">
 
-        <!-- Product 3 -->
-        <a href="product.html?id=103" class="product-card">
-            <img src="Real Madrid Maroon Kit Reveal (1).png" alt="Real Madrid Away 26/27(Full Sleeve)">
-            <h3>Real Madrid 3rd Kit 26/27(Full Sleeve)</h3>
-            <div class="price-container">
-                <del>1050.00৳</del>
-                <span class="current-price">950.00৳</span>
-            </div>
-            <span class="order-btn">Order Now</span>
-        </a>
+    <!-- Product 1 -->
+    <a href="product.html?id=101" class="product-card">
+      <img src="Real Madrid 2026_27 Jersey Reveal.png" alt="Real Madrid Home">
+      <h3>Real Madrid Home 26/27(Half Sleeve)</h3>
+      <div class="price-container">
+        <del>1050.00৳</del>
+        <span class="current-price">950.00৳</span>
+      </div>
+      <span class="order-btn">Order Now</span>
+    </a>
 
-        <!-- Product 4 -->
-        <a href="product.html?id=104" class="product-card">
-            <img src="Barça 2025_26 Home Kit Poster.png" alt="FC Barcelona Home 26/27(Half Sleeve)">
-            <h3>FC Barcelona Home 26/27(Half Sleeve)</h3>
-            <div class="price-container">
-                <del>1050.00৳</del>
-                <span class="current-price">950.00৳</span>
-            </div>
-            <span class="order-btn">Order Now</span>
-        </a>
+    <!-- Product 2 -->
+    <a href="product.html?id=102" class="product-card">
+      <img src="Real Madrid Teal Away Kit Reveal (1).png" alt="Real Madrid Away">
+      <h3>Real Madrid Away 26/27(Half Sleeve)</h3>
+      <div class="price-container">
+        <del>1050.00৳</del>
+        <span class="current-price">950.00৳</span>
+      </div>
+      <span class="order-btn">Order Now</span>
+    </a>
 
-        <!-- Product 5 -->
-        <a href="product.html?id=105" class="product-card">
-            <img src="PSG 2025_26 Home Kit Showcase.png" alt="PSG 26/27(Half Sleeve)">
-            <h3>PSG 26/27(Half Sleeve)</h3>
-            <div class="price-container">
-                <del>1050.00৳</del>
-                <span class="current-price">950.00৳</span>
-            </div>
-            <span class="order-btn">Order Now</span>
-        </a>
+    <!-- Product 3 -->
+    <a href="product.html?id=103" class="product-card">
+      <img src="Real Madrid Maroon Kit Reveal (1).png" alt="Real Madrid 3rd Kit">
+      <h3>Real Madrid 3rd Kit 26/27(Full Sleeve)</h3>
+      <div class="price-container">
+        <del>1050.00৳</del>
+        <span class="current-price">950.00৳</span>
+      </div>
+      <span class="order-btn">Order Now</span>
+    </a>
 
-         <!-- Product 6 -->
-        <a href="product.html?id=106" class="product-card">
-            <img src="AC Milan 2026_27 Jersey Reveal.png" alt="Inter Miami CF Third 26/27(Half Sleeve)">
-            <h3>AC Milan Retro</h3>
-            <div class="price-container">
-                <del>650৳</del>
-                <span class="current-price">500৳</span>
-            </div>
-            <span class="order-btn">Order Now</span>
-        </a>
-        <!-- Product 7 -->
-        <a href="product.html?id=107" class="product-card">
-            <img src="Liverpool FC Jersey Heritage Poster (1).png" alt="Inter Miami CF Third 26/27(Half Sleeve)">
-            <h3>Liverpool Retro</h3>
-            <div class="price-container">
-                <del>600৳</del>
-                <span class="current-price">5000.00৳</span>
-            </div>
-            <span class="order-btn">Order Now</span>
-        </a>
+    <!-- Product 4 -->
+    <a href="product.html?id=104" class="product-card">
+      <img src="Barça 2025_26 Home Kit Poster.png" alt="FC Barcelona Home">
+      <h3>FC Barcelona Home 26/27(Half Sleeve)</h3>
+      <div class="price-container">
+        <del>1050.00৳</del>
+        <span class="current-price">950.00৳</span>
+      </div>
+      <span class="order-btn">Order Now</span>
+    </a>
 
+    <!-- Product 5 -->
+    <a href="product.html?id=105" class="product-card">
+      <img src="PSG 2025_26 Home Kit Showcase.png" alt="PSG Home">
+      <h3>PSG 26/27(Half Sleeve)</h3>
+      <div class="price-container">
+        <del>1050.00৳</del>
+        <span class="current-price">950.00৳</span>
+      </div>
+      <span class="order-btn">Order Now</span>
+    </a>
 
+    <!-- Product 6 -->
+    <a href="product.html?id=106" class="product-card">
+      <img src="AC Milan 2026_27 Jersey Reveal.png" alt="AC Milan Retro">
+      <h3>AC Milan Retro</h3>
+      <div class="price-container">
+        <del>650.00৳</del>
+        <span class="current-price">500.00৳</span>
+      </div>
+      <span class="order-btn">Order Now</span>
+    </a>
+
+    <!-- Product 7 -->
+    <a href="product.html?id=107" class="product-card">
+      <img src="Liverpool FC Jersey Heritage Poster (1).png" alt="Liverpool Retro">
+      <h3>Liverpool Retro</h3>
+      <div class="price-container">
+        <del>650.00৳</del>
+        <span class="current-price">500.00৳</span>
+      </div>
+      <span class="order-btn">Order Now</span>
+    </a>
+
+  </div>
 
 </body>
 </html>
